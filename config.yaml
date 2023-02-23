@@ -18,9 +18,9 @@ proxies:
     - { name: hello2, type: http, server: hello2.lownet.xyz, port: 443, username: hello2, password: helloworld, tls: true, skip-cert-verify: true }
     - { name: hello1, type: http, server: hello1.lownet.xyz, port: 8443, username: hello1, password: helloworld, tls: true, skip-cert-verify: true }
 proxy-groups:
-    - { name: fastest, type: select, proxies: [自动选择, 故障转移, hello1] }
-    - { name: 自动选择, type: url-test, proxies: [hello1], url: 'http://www.gstatic.com/generate_204', interval: 86400 }
-    - { name: 故障转移, type: fallback, proxies: [hello1], url: 'http://www.gstatic.com/generate_204', interval: 7200 }
+    - { name: fastest, type: select, proxies: [自动选择, 故障转移, hello1, hello2] }
+    - { name: 自动选择, type: url-test, proxies: [hello1, hello2], url: 'http://www.gstatic.com/generate_204', interval: 86400 }
+    - { name: 故障转移, type: fallback, proxies: [hello1, hello2], url: 'http://www.gstatic.com/generate_204', interval: 7200 }
 rules:
     - 'DOMAIN,fast.lownet.xyz,DIRECT'
     - 'DOMAIN-SUFFIX,services.googleapis.cn,fastest'
