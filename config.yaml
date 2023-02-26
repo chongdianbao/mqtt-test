@@ -15,7 +15,7 @@ dns:
     fallback: ['https://doh.dns.sb/dns-query', 'https://dns.cloudflare.com/dns-query', 'https://dns.twnic.tw/dns-query', 'tls://8.8.4.4:853']
     fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
 proxies:
-    - { name: hello2, type: http, server: 161.35.155.160, port: 8443, username: hello, password: helloworld, tls: true, skip-cert-verify: true }
+    - { name: hello2, type: http, server: 161.35.155.160, port: 9443, username: hello, password: helloworld, tls: true, skip-cert-verify: true }
     - { name: hello1, type: http, server: hello1.lownet.xyz, port: 8443, username: hello1, password: helloworld, tls: true, skip-cert-verify: true }
 proxy-groups:
     - { name: fastest, type: select, proxies: [自动选择, 故障转移, hello1, hello2] }
